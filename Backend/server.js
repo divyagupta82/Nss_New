@@ -16,6 +16,8 @@ const LocalStrategy=require("passport-local");
 
 const app = express();
 const PORT = process.env.PORT||5000;
+const mongoURL=process.env.MONGODB_URI|| "mongodb+srv://221fa04507:KLZpx34OitBkGRhl@cluster0.aubau.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 
 // Middleware
 app.use(methodOverride('X-HTTP-Method-Override'));
@@ -23,7 +25,7 @@ app.use(express.json());
 app.use(cors()); 
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/NSS').then(() => console.log('Connected to MongoDB'))
+mongoose.connect(mongoURL).then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.log('Failed to connect to MongoDB', error));
 
 
